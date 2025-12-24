@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Abdulah</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+body{
+    background:radial-gradient(circle at top,#020024,#090979,#000);
+    color:#eaf6ff;
+    overflow-x:hidden;
+}
+
+/* Pages */
+.page{
+    min-height:100vh;
+    display:none;
+    padding:40px 20px;
+    animation:enter 1.2s ease;
+}
+.page.active{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+@keyframes enter{
+    from{opacity:0;transform:translateY(40px) scale(.95);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+/* Text */
+h1,h2{
+    background:linear-gradient(90deg,#00f0ff,#6f7bff,#00ffb3);
+    -webkit-background-clip:text;
+    color:transparent;
+    text-shadow:0 0 25px rgba(0,255,255,.3);
+}
+h1{font-size:clamp(2.6rem,6vw,4.3rem);}
+h2{font-size:clamp(2rem,5vw,3.2rem);}
+p{
+    max-width:720px;
+    font-size:1.2rem;
+    line-height:1.7;
+    margin-top:20px;
+}
+
+/* Button */
+button{
+    margin-top:35px;
+    padding:15px 45px;
+    border:none;
+    border-radius:60px;
+    font-size:1.1rem;
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+    color:white;
+    cursor:pointer;
+    transition:.4s;
+    box-shadow:0 0 25px rgba(0,140,255,.6);
+}
+
+/* GLOWING & MOVING BUTTON */
+.glow-btn{
+    position:relative;
+    z-index:10;
+    animation:moveAround 4s infinite ease-in-out alternate;
+    box-shadow: 0 0 10px #00c6ff, 0 0 20px #00f0ff, 0 0 30px #0072ff;
+}
+.glow-btn:hover{
+    transform:scale(1.2);
+    box-shadow: 0 0 20px #00c6ff, 0 0 40px #00f0ff, 0 0 60px #0072ff;
+}
+
+@keyframes moveAround{
+    0% { transform: translate(0%,0%) rotate(0deg); }
+    20% { transform: translate(5%,-3%) rotate(5deg); }
+    40% { transform: translate(-4%,4%) rotate(-5deg); }
+    60% { transform: translate(3%,-5%) rotate(5deg); }
+    80% { transform: translate(-2%,3%) rotate(-3deg); }
+    100% { transform: translate(0%,0%) rotate(0deg); }
+}
+
+/* 3D Flip */
+.scene{perspective:1200px;margin-top:30px;}
+.box{
+    width:300px;height:380px;
+    transform-style:preserve-3d;
+    transition:1.2s;
+}
+.box:hover{transform:rotateY(180deg);}
+.side{
+    position:absolute;
+    inset:0;
+    border-radius:25px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    backface-visibility:hidden;
+}
+.a{background:linear-gradient(135deg,#0047ff,#00e0ff);}
+.b{
+    background:linear-gradient(135deg,#00ffcc,#0055ff);
+    transform:rotateY(180deg);
+}
+
+/* Floating lines */
+.float{
+    animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* Confetti */
+canvas{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+/* Animated Image */
+.animated-image {
+    display:none;
+    width: 250px;
+    max-width: 80%;
+    margin-top: 30px;
+    animation:bounce 2s ease-in-out forwards;
+}
+@keyframes bounce {
+    0% { transform:translateY(0); }
+    30% { transform:translateY(-20px); }
+    50% { transform:translateY(10px); }
+    70% { transform:translateY(-5px); }
+    100% { transform:translateY(0); }
+}
+
+/* Video background for final image page */
+.bg-video {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0.15;
+    z-index:-1;
+}
+</style>
+</head>
+
+<body>
+
+<section class="page active" id="p1">
+    <h1>Happy Birthday Abdulah</h1>
+    <p class="float">
+        Today isn’t normal.  
+        The vibes are louder.  
+        The smile is bigger.  
+        Because <b>Abdulah exists</b> 🔥
+    </p>
+    <button class="glow-btn" onclick="go(2)">Continue</button>
+</section>
+
+<section class="page" id="p2">
+    <h2>Another Year. Same Legend.</h2>
+    <p>
+        You don’t age…  
+        you <b>level up</b> 💪  
+        Stronger jokes, smarter mind,  
+        and still eating sugar like a champion 😄
+    </p>
+    <button class="glow-btn" onclick="go(3)">Next</button>
+</section>
+
+<section class="page" id="p3">
+    <div class="scene">
+        <div class="box">
+            <div class="side a">
+                <h2>For You</h2>
+            </div>
+            <div class="side b">
+                <p>
+                    May success chase you,  
+                    happiness stay with you,  
+                    and snacks never finish around you 😎
+                </p>
+            </div>
+        </div>
+    </div>
+    <button class="glow-btn" onclick="go(4)">More</button>
+</section>
+
+<section class="page" id="p4">
+    <h2>Facts </h2>
+    <p>
+        Wherever there is a sugar bowl = there is Abdulah 😂<br>
+        ہزاروں خواہشیں ایسی کہ ہر خواہش پہ دم نکلے
+       <br>  بہت نکلے میرے ارمان لیکن پھر بھی کم نکلے
+    </p>
+    <button class="glow-btn" onclick="go(5)">Keep Going</button>
+</section>
+
+<section class="page" id="p5">
+    <h2>Respect the Birthday King</h2>
+    <p>
+        Calm when needed.  
+        Crazy when allowed.  
+        Loyal always.
+         sometimes react like a muhaly_ki_anty
+       <br> That’s <b>LUPM_🌴</b> 👑
+    </p>
+    <button class="glow-btn" onclick="go(6)">Almost There</button>
+</section>
+
+<section class="page" id="p6">
+    <h2>Make Some Noise</h2>
+    <p>
+        This moment belongs to you.  
+        Smile. Laugh. Celebrate.  
+        You earned it 🥳
+    </p>
+    <button class="glow-btn" onclick="go(7);confetti()">Finish Strong</button>
+</section>
+
+<section class="page" id="p7">
+    <h1>Enjoy Your Day Abdulah</h1>
+    <p>
+        Stay real. Stay bold.  
+        And never stop being you 💙  
+        Happy Birthday 🎂
+    </p>
+    <button class="glow-btn" onclick="go(8)">Final Surprise</button>
+</section>
+
+<section class="page" id="p8">
+    <video class="bg-video" autoplay muted loop>
+        <source src="/background.mp4" type="video/mp4">
+    </video>
+    <h1>Surprise!</h1>
+    <p>Wishing you the sweetest birthday moments 🎉</p>
+    <img src="/pic.jpeg" alt="Birthday Cake" class="animated-image" id="finalImage" />
+</section>
+
+<canvas id="fx"></canvas>
+<audio id="bg-music" src="/happy-birthday-357371.mp3" loop></audio>
+
+<script>
+function go(n){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const nextPage = document.getElementById('p' + n);
+    nextPage.classList.add('active');
+
+    // Play music only on the final page
+    const music = document.getElementById('bg-music');
+    if(n === 8){
+        music.play();
+        document.getElementById('finalImage').style.display = 'block';
+    } else {
+        music.pause();
+        music.currentTime = 0;
+    }
+}
+
+/* Confetti */
+const c = document.getElementById('fx'), x = c.getContext('2d');
+c.width = innerWidth; c.height = innerHeight;
+let d = [];
+function confetti(){
+    d = [];
+    for(let i = 0; i < 250; i++){
+        d.push({x: Math.random() * c.width, y: Math.random() * c.height,
+                r: Math.random() * 6 + 3, s: Math.random() * 3 + 2,
+                c: `hsl(${Math.random() * 360}, 100%, 50%)`});
+    }
+    run();
+}
+function run(){
+    x.clearRect(0, 0, c.width, c.height);
+    d.forEach(p => {
+        x.fillStyle = p.c;
+        x.beginPath();
+        x.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        x.fill();
+        p.y += p.s;
+        if(p.y > c.height) p.y = 0;
+    });
+    requestAnimationFrame(run);
+}
+</script>
+
+</body>
+</html>
